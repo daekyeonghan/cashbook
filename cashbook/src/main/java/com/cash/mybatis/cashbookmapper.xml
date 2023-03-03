@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cash.mapper.CashbookMapper">
+	<select id="select" parameterType="Integer" resultType="Cashbook">
+		SELECT * FROM cashbook WHERE cb_id=#{cb_id}
+	</select>
+	<select id="selectall" resultType="Cashbook">
+		SELECT * FROM cashbook
+	</select>
+	<insert id="insert" parameterType="Cashbook">
+		INSERT INTO cashbook VALUES(0,#{cb_kind},#{cb_price},#{cb_content},#{cb_date},NOW(),#{userid},#{c_name})
+	</insert>
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM cashbook WHERE cb_id=#{cb_id}
+	</delete>
+	<update id="update" parameterType="Cashbook">
+		UPDATE cashbook SET cb_kind=#{cb_kind}, cb_price=#{cb_price}, cb_content=#{cb_content}, cb_date=#{cb_date}, c_name=#{c_name}
+		WHERE cb_id=#{cb_id}
+	</update>
+</mapper>

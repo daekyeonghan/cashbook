@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cash.mapper.BoardMapper">
+	<select id="select" parameterType="Integer" resultType="Board">
+		SELECT * FROM board WHERE b_no=#{b_no}
+	</select>
+	<select id="selectall" resultType="Board">
+		SELECT * FROM board
+	</select>
+	<insert id="insert" parameterType="Board">
+		INSERT INTO board VALUES(0,#{b_title},#{b_content},#{b_photo},NOW(),#{userid})
+	</insert>
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM board WHERE b_no=#{b_no}
+	</delete>
+	<update id="update" parameterType="Board">
+		UPDATE board SET b_title=#{b_title}, b_content=#{b_content}, b_photo=#{b_photo}
+		WHERE b_no=#{b_no}
+	</update>
+</mapper>
